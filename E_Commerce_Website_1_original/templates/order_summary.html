@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Summary</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Light blue background */
+            margin: 0;
+            padding-bottom: 60px;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #1976d2; /* Dark blue navbar */
+        }
+        .navbar-brand {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: rgb(239, 234, 234) !important; /* Example with !important */
+        }
+        .hero-section {
+            background-color: #d5e8ff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .hero-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .order-summary {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .order-items {
+            flex: 1;
+            max-width: 600px;
+            margin-right: 20px;
+        }
+        .order-item {
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #e0e0e0;
+            border: 3px solid #1976d2;
+            
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .order-item:hover {
+            background-color: #bbdefb; /* Light blue on hover */
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .order-item:nth-child(odd) {
+            background-color: #f0f0f0;
+        }
+        .order-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.9rem; /* Adjust the font size */
+            color: #070707b9; /* Adjust the color */
+        }
+        .order-item p {
+            margin-bottom: 5px;
+        }
+        .order-summary-details {
+            flex: 0 0 300px;
+            padding: 20px;
+            background-color: #dcdcdc;
+            border-radius: 5px;
+            border: 3px solid #1976d2;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 20px;
+            margin-top: 50px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .order-summary-details:hover {
+            background-color: #c8e6c9; /* Light green on hover */
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .btn-primary, .btn-secondary {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .footer {
+            bottom: 0;
+            width: 100%;
+            background-color: #1976d2; /* Dark blue footer */
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Amazon</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">All</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Today's Deals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Customer Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Registry</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Gift Cards</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sell</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 search-bar" type="search" placeholder="Search products..." aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('products') }}"><i class="fas fa-user"></i> Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('cart') }}"><i class="fas fa-shopping-cart"></i> Cart
+                    {% if cart_items_count is defined and cart_items_count > 0 %}
+                        <span class="badge badge-pill badge-danger">{{ cart_items_count }}</span>
+                    {% endif %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h2>Shop Prime Big Deal Days</h2>
+        </div>
+    </div>
+
+    <!-- Order Summary Section -->
+    <div class="container order-summary">
+        <div class="order-items">
+            <h1>Order Summary</h1>
+            
+            <!-- Order Items -->
+            {% for item in cart_items %}
+                <div class="order-item">
+                    <h4>{{ item[1] }}</h4>
+                    <p><strong>Price:</strong> Rs {{ item[2] }}</p>
+                    <p><strong>Quantity:</strong> {{ item[3] }}</p>
+                    <p><strong>Subtotal:</strong> Rs {{ item[2] * item[3] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        
+       
+        <div class="order-summary-details">
+            <p><strong>Total Price:</strong> Rs {{ total_price }}</p>
+            <p><strong>Tax:</strong> Rs {{ tax }}</p>
+            <p><strong>Shipping Cost:</strong> Rs {{ shipping_cost }}</p>
+            <p><strong>Grand Total:</strong> Rs {{ grand_total }}</p>
+            <a href="{{ url_for('ship') }}" class="btn btn-success">Proceed to Payment</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Amazon. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
+            <p>Follow us: <a href="#"><i class="fab fa-facebook"></i></a> <a href="#"><i class="fab fa-twitter"></i></a> <a href="#"><i class="fab fa-instagram"></i></a></p>
+        </div>
+    </footer>
+
+    <!-- Include Bootstrap and Font Awesome JavaScript libraries at the end of the body section -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>

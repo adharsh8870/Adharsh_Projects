@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Order Confirmation</h2>
+        <p>Your order has been successfully placed!</p>
+        <h3>Shipping Information</h3>
+        <p><strong>Full Name:</strong> {{ shipping_info.fullname }}</p>
+        <p><strong>Address:</strong> {{ shipping_info.address }}, {{ shipping_info.city }}, {{ shipping_info.state }}, {{ shipping_info.zip_code }}</p>
+        <!-- <a href="{{ url_for('products') }}" class="btn btn-primary mt-3">Continue Shopping</a> -->
+    </div>
+</body>
+</html>
