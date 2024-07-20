@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hospital</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>
+
+<body style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    <header>
+        <p>Contact Us +91 96366 20000/01/ukh@hospital.com hjhhhghg</p>
+    </header>
+    <div>
+
+        <nav>
+            <table>
+                <tr>
+                    <td style="font-size:50px;font-family:forte;"><span>SUPER</span> Hospital</td>
+                    <td style="vertical-align: bottom;"><a href="{{ url_for('index') }}">HOME</a>
+                        <a href="{{url_for('about_us') }}">ABOUT US</a>
+                        <a href="{{url_for('services') }}">SERVICES</a>
+                        <a href="{{url_for('doctors') }}">DOCTORS</a>
+                        <a href="{{url_for('contact_us') }}">CONTACT US</a>
+                        <a href="{{url_for('appointments') }}"> APPOINTMENT</a>
+
+                    </td>
+                </tr>
+            </table>
+        </nav>
+    </div>
+    <div style="width:100%;">
+        <hr color="grey">
+    </div>
+    
+    <div  class="div4">
+        <p style="margin-top: 30px;margin-left: 30px;">OUR OUTSTANDING SERVICES</p>
+        
+        <div  class="adha">
+            
+            
+            <h3 style="margin-left: 30px;" class="ma">What We Offer!</h3>
+            <ul class="lineheight" style="margin-left: 30px;padding-bottom:30px;"  class="ma">
+                <li>DENTAL IMPLANTS</li>
+                <li>WHITENNING</li>
+                <li>VACCINATIONS</li>
+                <li>LABORATORY</li>
+                <li>MEDICAL DRESSAGE</li>
+                <li>EMERGENCY CONTRACEPTION</li>
+                <li>HEALTH ISSUES</li>
+                <li>VACCINATIONS</li>
+            </ul>
+        </div>
+        <div  class="adha">
+            <img class="m" src="../static/images/c.jpg">
+        </div>
+
+        
+    </div>
+    <hr color="grey">
+    <div class="div4">
+        <p style="margin-left: 30px;">--------------</p>
+        <h2 style="margin-left: 30px;">Our Department</h2>
+        <ul class="lineheight" style="margin-left: 30px;">
+            <li>DENTAL Care</li>
+            <li>OTOLOGY</li>
+            <li>CARDIAC</li>
+            <li>HEPATOLOGY</li>
+            <li>ORTHOPEDICS</li>
+            <li>GASTROENTOLOGY</li>
+            <li>OUTPATIENT</li>
+            <li>MENTAL HEALTH</li>
+        </ul>
+    </div>
+    <footer>
+        <div>
+            <text>&copy;Super Hospital ,site designed & developed by MITRAz</text>
+        </div>
+    </footer>
+    </body>
+    </html>
+    

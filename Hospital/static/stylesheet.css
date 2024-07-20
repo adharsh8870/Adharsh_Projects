@@ -1,0 +1,226 @@
+.star{
+    margin: auto;
+    padding: auto;
+}
+header{
+    background-color: #2FA5EB;
+    color:white;
+    position:sticky;
+    z-index: 1;
+    top:0px;
+    left:0;
+    
+}
+header p{
+    padding:10px;
+    margin-left:900px;
+}
+span{
+    color:#2FA5EB;
+}
+h1{
+    text-align: left;
+    position:sticky;
+    
+    
+}
+nav{
+    text-align:right;
+   
+    position:sticky;
+    width:90%;
+    z-index:1;
+    top:30px;
+    left:0;
+    
+   
+   
+    
+    
+   
+}
+a:hover{
+    color:blue;
+    text-decoration: underline;
+
+}
+header p{
+    margin-right:50px;
+}
+a{
+    text-decoration: none;
+    padding:10px;
+    color:grey;
+    padding-bottom: 40px;
+    
+    
+}
+table{
+    width:100%;
+}
+
+
+
+div{
+    width:80%;
+    margin: 0 auto;
+    
+}
+.div1{
+    width:100%;
+}
+div img{
+    width:100%;
+    height:450px;
+}
+.relative{
+    position:relative;
+
+
+    
+}
+.absolute{
+    position:absolute;
+    top:0px;
+   
+    bottom:80px;
+    width:85%;
+    margin:0 auto;
+    
+   background-color: black;
+   opacity:0.4;
+   color:white;
+   margin-left:80px;
+}
+.ptext{
+    margin-top:130px;
+}
+.d{
+    width:50%;
+    display:inline-block;
+    box-sizing: border-box;
+    margin-left:600px;
+}
+.h{
+    text-align: center;
+}
+.tab{
+    border-spacing: 30px;
+   
+}
+input[type=text]{
+    padding:15px;
+}
+input[type=email]{
+    padding:15px;
+}
+input[type=number]{
+    padding:15px;
+}
+input[type=submit]{
+    padding:10px;
+    width:480px;
+    background-color: #2FA5EB;
+}
+select {
+    padding:15px;
+    width:200px;
+}
+#tt{
+    width:480px;
+    height:80px;
+    
+}
+.s:hover{
+    background-color:red;
+}
+footer{
+    background-color: #2FA5EB;
+    
+}
+footer div{
+    background-color: black;
+    color:white;
+    padding: 10px;
+   
+    
+}
+.d2{
+    margin-right:230px;
+}
+cite{
+    background-color: yellow;
+}
+.ab{
+    display:inline-block;
+    box-sizing: border-box;
+    width:45%;
+    text-align: justify;
+}
+.im{
+    height:310px;
+    margin-left:10px;
+    
+
+}
+.adha{
+    width:40%;
+   display:inline-block;
+   box-sizing: border-box;
+  
+    
+}
+
+.m{
+    height:250px;
+    margin-left:110px;
+    width:400px;
+    padding-top:20px;
+    
+}
+.div4{
+    width:80%;
+   
+    
+}
+.ma{
+    margin-left:5px;
+    margin-bottom: 30px;
+}
+.p{
+    padding-top:50px;
+}
+.contact{
+    padding:40px;
+}
+.pradeep{
+    font-style: italic;
+}
+.paragap{
+    line-height: 30px;
+    margin-right:230px;
+    
+    
+
+}
+.lineheight{
+    line-height:25px ;
+}
+.pargap{
+    line-height: 30px;
+    
+}
+.imran{
+    display: block;
+    
+}
+
+
+
+
+
+    
+    
+    
+
+

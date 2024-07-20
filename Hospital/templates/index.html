@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hospital</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>
+
+<body >
+    <header>
+        <p>Contact Us +91 96366 20000/01/ukh@hospital.com hjhhhghg</p>
+    </header>
+   
+
+        <nav>
+            <table>
+                <tr >
+                    <td  style="font-size:50px;font-family:forte;"><span>SUPER</span> Hospital</td>
+                    <td style="vertical-align: bottom;"><a href="{{ url_for('index') }}">HOME</a>
+                        <a href="{{url_for('about_us') }}">ABOUT US</a>
+                        <a href="{{url_for('services') }}">SERVICES</a>
+                        <a href="{{url_for('doctors') }}">DOCTORS</a>
+                        <a href="{{url_for('contact_us') }}">CONTACT US</a>
+                        <a href="{{url_for('appointments') }}"> APPOINTMENT</a>
+
+                    </td>
+                </tr>
+            </table>
+           
+        </nav>
+        
+        
+   
+    <hr class="star" style="border:2px medium;">
+    
+
+    
+    <div class="relative">
+        
+
+
+        <img class="imran" src="../static/images/a.jpg">
+    
+      <div class="absolute">
+          <p class="ptext" style="font-size: 30px;"><b>Healthcare.Services</b></p>
+          <text class="ptext">We Care About Your health</text>
+           
+      </div>
+    </div>  
+    <hr class="star" style="border:2px medium;">
+    <div >
+
+        <p class="paragap" >We are medical center</p>
+        <p class="paragap" ><b>We Have Medicare Plan Options for You!</b></p>
+        
+        <p class="paragap"  class="d2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus neque tempore veritatis saepe fuga. Quaerat provident doloribus consectetur, ad, odio architecto dolorem optio obcaecati magni repudiandae fugit totam porro illo. berd var heikht kielgds. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta optio laborum ipsam velit. Repudiandae dicta labore nam, tenetur reprehenderit sequi, eum libero a facilis, pariatur debitis soluta nihil porro velit.</p>
+        <p class="paragap" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, animi perspiciatis modi hic, tempore laudantium rerum facere officiis deserunt ratione voluptates iure dolore quaerat tenetur? Rem odit temporibus accusantium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptatem ea ad id dolore dolorum ut, beatae esse nobis possimus laborum cum dicta dolorem perspiciatis! Deserunt est optio quia velit! </p>
+        
+        <ul>
+       
+        <li class="paragap" >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas voluptatum velit, quasi iure </li>
+            <li class="paragap">Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
+            <li class="paragap">Lorem ipsum dolor sit amet consectetur adipisicing elit Quas voluptatum velit, quasi iure </li>
+            <li class="paragap">Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
+            <li class="paragap">Lorem ipsum dolor sit amet consectetur adipisicing elit Quas voluptatum velit, quasi iure </li>
+        </ul>
+    </div>
+    <hr class="star" style="border:2px medium;" >
+    <div>
+        <h3 style="font-size:30px;font-family:forte;" class="h">Make an Appointment</h3>
+        <div class="d">
+
+    </div>
+        <div class="d">
+            <table class="tab">
+                <form action="{{url_for('add_appointment') }}" method="POST">
+                    
+                    <tr>
+                        <td ><input type="text" id="first_name" name="first_name" placeholder="First Name"></td>
+                        <td ><input type="text" id="last_name" name="last_name" placeholder="Last Name"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="email" id="email" name="email" placeholder="Email Id"></td>
+                        <td><input type="number" id="mobile" name="mobile" placeholder="Mobile Number"></td>
+                    </tr>
+                    <tr>
+                        <!-- <td><select placeholder="sex">
+                            <option value="Sex">Sex</option>
+                            <option value="female">Female</option>
+                            <option value="female">male</option>
+
+                        </select> </td> -->
+                        <td>
+                            <select id="sex" name="sex">
+                                <option value="Sex">Sex</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                            </select>
+                        </td>
+                        
+                        <td><input type="text" id="date" name="date" placeholder="Appointment Date"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <textarea id="tt" name="message"></textarea>
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td colspan="2">
+                            <input class="s"  type="submit" value="SUBMIT">
+                        </td>
+                    </tr>
+                </form>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <text>&copy;Super Hospital ,site designed & developed by MITRAz</text>
+        </div>
+    </footer>
+   
+
+    
+</body>
+
+</html>
