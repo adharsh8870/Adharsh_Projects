@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa; /* Example background color */
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .form-control {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <form action="{{ url_for('checkout3') }}" method="POST" id="payment-form">
+    <div class="card p-3">
+      <h5 class="card-title">Enter Card Details</h5>
+      <div class="form-group">
+        <label for="card-element">
+          Credit or Debit Card
+        </label>
+        <div id="card-element" class="form-control">
+          <!-- A Stripe Element will be inserted here. -->
+        </div>
+        <div id="card-errors" role="alert" class="invalid-feedback"></div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Submit Payment</button>
+    </div>
+  </form>
+</div>
+<div><br>
+  <p style="text-align: center;">Cash on Delivery is not Available....</p>
+</div>
+
+<!-- Include Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  // Create a Stripe client
+  var stripe = Stripe('{{ STRIPE_PUBLISHABLE_KEY }}');
+
+  // Create an instance of Elements
+  var elements = stripe.elements();
+
+  // Create an instance of the card Element
+  var card = elements.create('card');
+
+  // Add an instance of the card Element into the `card-element` div
+  card.mount('#card-element');
+
+  // Handle form submission
+  var form = document.getElementById('payment-form');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    stripe.createToken(card).then(function(result) {
+      if (result.error) {
+        // Inform the user if there was an error
+        var errorElement = document.getElementById('card-errors');
+        errorElement.textContent = result.error.message;
+      } else {
+        // Send the token to your server
+        stripeTokenHandler(result.token);
+      }
+    });
+  });
+
+  // Submit the form with the token ID
+  function stripeTokenHandler(token) {
+    // Insert the token ID into the form so it gets submitted to the server
+    var form = document.getElementById('payment-form');
+    var hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('type', 'hidden');
+    hiddenInput.setAttribute('name', 'stripeToken');
+    hiddenInput.setAttribute('value', token.id);
+    form.appendChild(hiddenInput);
+
+    // Submit the form
+    form.submit();
+  }
+</script>
+
+<!-- Include Bootstrap JS and dependencies (optional, for additional functionality) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

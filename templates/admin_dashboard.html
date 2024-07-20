@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Admin - Dashboard</h2>
+    <div class="row mt-4">
+        <div class="col-lg-4 mb-4">
+            <a href="{{ url_for('admin_products') }}" class="dashboard-box products">
+                <div class="inner-box">
+                    <h4>Products</h4>
+                    <h4> {% if product_count is defined and product_count > 0 %}
+                        <span class="badge badge-pill badge-danger">{{ product_count }}</span>
+                        {% endif %}</h4>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <a href="{{ url_for('admin_orders') }}" class="dashboard-box orders">
+                <div class="inner-box">
+                    <h4>Orders</h4>
+                    <h4>
+                        
+
+                        {% if order_count is defined and order_count > 0 %}
+                        <span class="badge badge-pill badge-danger">{{ order_count }}</span>
+                        {% endif %}
+
+                    </h4>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <a href="{{ url_for('admin_users') }}" class="dashboard-box users">
+                <div class="inner-box">
+                    <h4>Users</h4>
+                    <h4>
+                        {% if user_count is defined and user_count > 0 %}
+                        <span class="badge badge-pill badge-danger">{{ user_count }}</span>
+                        {% endif %}
+
+
+                    </h4>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Add transitions on hover
+    document.addEventListener("DOMContentLoaded", function() {
+        const boxes = document.querySelectorAll(".dashboard-box");
+
+        boxes.forEach(box => {
+            box.addEventListener("mouseenter", function() {
+                this.querySelector(".inner-box").classList.add("box-hover");
+            });
+
+            box.addEventListener("mouseleave", function() {
+                this.querySelector(".inner-box").classList.remove("box-hover");
+            });
+        });
+    });
+</script>
+{% endblock %}
